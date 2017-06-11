@@ -11,14 +11,19 @@ import { User } from '../user.model';
 export class AuthenticationComponent implements OnInit {
 
   private user: User = new User();
+  private alertMessage = undefined;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  authenticate() {
-    this.authService.login(this.user);
+  login() {
+    this.authService.login(this.user).subscribe(credentials => {
+      this.authService.createSession(credentials);
+    }, error => {
+      this.alertMessage = error._body;
+    });
   }
 
 }
