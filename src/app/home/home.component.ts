@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { User } from '../user.model';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  currentUser: User = new User();
+
+  constructor() {
+    this.currentUser.name = sessionStorage.name;
+    this.currentUser.email = sessionStorage.email;
+    this.currentUser.password = sessionStorage.password;
+  }
 
   ngOnInit() {
   }

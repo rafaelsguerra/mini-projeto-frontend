@@ -29,20 +29,12 @@ export class RegisterComponent implements OnInit {
   //   return false;
   // }
 
-  onRegisterUser(name: string, email: string, password: string) {
-    this.authService.register(name, email, password).subscribe(message => {
+  onRegisterUser() {
+    this.authService.register(this.user.name, this.user.email, this.user.password).subscribe(message => {
       this.router.navigate(['/authenticate']);
 
     }, error => {
       this.registered = error._body;
     });
-
   }
-
-  onSubmit(form) {
-    console.log(form);
-  }
-
-
-
 }

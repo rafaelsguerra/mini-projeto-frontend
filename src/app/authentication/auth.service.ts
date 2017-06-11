@@ -19,8 +19,6 @@ export class AuthService {
     const credentials = {email: user.email, password: user.password};
     const url = this.authApiUrl + 'login';
 
-    console.log(credentials);
-
     return this.http.post(url, credentials);
   }
 
