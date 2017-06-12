@@ -8,8 +8,9 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
-import {UserService} from './user.service';
-import {AuthService} from './authentication/auth.service';
+import { UserService } from './user.service';
+import { AuthService } from './authentication/auth.service';
+import { AuthGuard } from './_guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import {AuthService} from './authentication/auth.service';
     HttpModule,
     routing
   ],
-  providers: [UserService, AuthService],
+  providers: [UserService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
