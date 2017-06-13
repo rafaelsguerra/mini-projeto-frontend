@@ -29,7 +29,4 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  mopa(form) {
-    console.log(form);
-  }
 }
