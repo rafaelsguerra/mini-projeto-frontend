@@ -10,11 +10,11 @@
 
   <h2>Registro</h2>
 
-  <form #f="ngForm" (ngSubmit)="onRegisterUser()">
+  <form #f="ngForm" (ngSubmit)="mopa(f)">
     <div class="form-group" [ngClass]="{ 'has-error' : !nome.valid && nome.touched}">
       <label for="nome">Nome:</label>
-      <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="user.name" required #nome="ngModel">
-      <div *ngIf="!nome.valid && nome.touched" class="help-block">Nome é obrigatório!</div>
+      <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="user.name" required #nome="ngModel" minlength="5">
+      <div *ngIf="!nome.valid && nome.touched" class="help-block">Insira seu nome e sobrenome! </div>
     </div>
 
     <div class="form-group" [ngClass]="{ 'has-error' : !email.valid && email.touched}">
@@ -27,6 +27,12 @@
       <label for="password">Senha:</label>
       <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" minlength="6" maxlength="32" required #password="ngModel">
       <div *ngIf="!password.valid && password.touched" class="help-block">Senha deve possuir entre 6  e 32 dígitos!</div>
+    </div>
+
+    <div class="form-group" [ngClass]="{ 'has-error' : !password2.valid && password2.touched }">
+      <label for="password2">Confirme a senha:</label>
+      <input type="password" class="form-control" id="password2" name="password2" ngModel minlength="6" maxlength="32" required #password2="ngModel" validateEqual="password">
+      <div *ngIf="!password2.valid && password2.touched" class="help-block">As senhas não estão iguais!</div>
     </div>
 
     <button [disabled]="!f.valid" class="btn btn-primary" type="submit">Registrar</button>

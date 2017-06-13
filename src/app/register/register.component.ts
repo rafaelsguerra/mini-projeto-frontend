@@ -28,4 +28,8 @@ export class RegisterComponent implements OnInit {
       this.registered = error._body;
     });
   }
+
+  mopa(form) {
+    console.log(form);
+  }
 }

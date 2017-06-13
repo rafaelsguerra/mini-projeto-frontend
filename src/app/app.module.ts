@@ -11,13 +11,15 @@ import { routing } from './app.routing';
 import { UserService } from './user.service';
 import { AuthService } from './authentication/auth.service';
 import { AuthGuard } from './_guards/auth.guard';
+import { EqualValidatorDirective } from './_directives/equal-validator.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthenticationComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    EqualValidatorDirective
   ],
   imports: [
     BrowserModule,
