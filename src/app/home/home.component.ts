@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../user.model';
+import { Router} from '@angular/router';
+import { AuthService } from '../authentication/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,15 +10,16 @@ import { User } from '../user.model';
 })
 export class HomeComponent implements OnInit {
 
-  currentUser: User = new User();
+  currentUser = JSON.parse(window.sessionStorage.getItem('user'));
 
-  constructor() {
-    this.currentUser.name = sessionStorage.name;
-    this.currentUser.email = sessionStorage.email;
-    this.currentUser.password = sessionStorage.password;
-  }
+  constructor(private router: Router, private authService: AuthService) {  }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/authenticate']);
   }
 
 }

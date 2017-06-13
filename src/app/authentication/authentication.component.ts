@@ -26,9 +26,4 @@ export class AuthenticationComponent implements OnInit {
     });
   }
 
-  onSubmit(form) {
-    console.log(form);
-    console.log(this.user);
-  }
-
 }

@@ -1,5 +1,13 @@
 <div class="col-md-6 col-md-offset-3">
 
+  <div *ngIf="registered != undefined" class="alert alert-danger">
+    <h4>{{ registered }}</h4>
+  </div>
+
+</div>
+
+<div class="col-md-6 col-md-offset-3">
+
   <h2>Registro</h2>
 
   <form #f="ngForm" (ngSubmit)="onRegisterUser()">

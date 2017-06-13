@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
+
 import 'rxjs/add/operator/map';
 
 import { User } from '../user.model';
-
-
 
 @Injectable()
 export class AuthService {
@@ -27,19 +25,16 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
-  // getUserById(id: number) {
-  //   const url = 'http://api.postmon.com.br/v1/cep/';
-  //   return this.http.get(url + id).map((response: Response) => response.json());
-  // }
-
   register (name: string, email: string, password: string) {
     const credentials = {name: name, email: email, password: password};
     return this.http.post(this.authApiUrl + 'register', credentials);
   }
 
-  showUser(user: string) {
-    console.log(user);
+  public logout() {
+    if (!window.sessionStorage.getItem('user') === null) {
+      window.sessionStorage.clear();
+      this.router.navigate(['/authenticate']);
+    }
   }
-
 
 }

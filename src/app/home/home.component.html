@@ -1,2 +1,2 @@
-<h1>Hello!</h1>
-<button routerLink="/authenticate" class="btn btn-primary">Logout</button>
+<h1>Hello {{ currentUser.name }}!</h1>
+<button class="btn btn-primary" (click)="logout()">Logout</button>
